@@ -1,59 +1,89 @@
-/* Style général du footer */
-footer {
-  background-color: #413e3e;
-  color: #ffffff;
-  padding: 40px 0;
+.footer {
+  background-color: #0f172a;
+  color: #cbd5e1;
+  padding: 40px 20px;
+  font-family: sans-serif;
+}
+
+.footer-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  gap: 2cm;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
 }
 
-/* Style de chaque bloc (ul) */
-footer ul {
-  list-style: none;
-  padding: 20px;
-  margin: 20px;
-  min-width: 200px;
-  background-color: #534e4e;
-  border-radius: 12px; 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
-  transition: transform 0.3s ease;
+.footer-left {
+  flex: 1 1 200px;
+  margin-bottom: 20px;
 }
 
-/* Effet au survol */
-footer ul:hover {
-  transform: translateY(-5px);
+.footer-left h2 {
+  color: white;
 }
 
-/* Titres des sections */
-footer ul h3 {
+.footer-left img {
+  width: 80px;
+  margin-top: 10px;
+}
+
+.footer-left p {
+  margin: 15px 0;
+  color: #94a3b8;
+}
+
+.social-icons a {
+  color: #94a3b8;
+  margin-right: 10px;
   font-size: 18px;
-  color: #f0a500;
-  margin-bottom: 15px;
+  text-decoration: none;
+  
+}
+.social-icons a  img{
+  color: #94a3b8;
+  margin-right: 10px;
+  font-size: 18px;
+  text-decoration: none;
+  width: 40px;
 }
 
-/* Éléments de liste */
-footer li {
-  margin: 8px 0;
-  color: #bbbbbb;
-  transition: color 0.3s ease;
+.footer-links {
+  display: flex;
+  flex: 3 1 600px;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-footer li:hover {
-  color: #ffffff;
-  cursor: pointer;
+.footer-links div {
+  margin: 10px;
+  min-width: 150px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  footer {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+.footer-links h3 {
+  color: white;
+  margin-bottom: 10px;
+}
 
-  footer ul {
-    margin: 10px 0;
-  }
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 8px;
+}
+
+.footer-links ul li a {
+  color: #94a3b8;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid #1e293b;
+  padding-top: 20px;
+  font-size: 14px;
+  color: #64748b;
 }

@@ -12,7 +12,6 @@
     <?php require_once 'views/components/header.php'; ?>
     <main class=" container border border-2  flex-grow-1 ">
         <?= $content ?>
-        <br><br><br>
     </main>
 
     <?php require_once 'views/components/footer.php'; ?>

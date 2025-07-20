@@ -8,13 +8,16 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                <a class="nav-link active"  href="creation">Evènements</a>
+                <a class="nav-link active"  href="clubs">Clubs</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="lumiere">Profil</a>
+                <a class="nav-link" href="evenement">Evenement</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="obscur">Logout</a>
+                <a class="nav-link" href="apropos">A propos</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="connexion">connexion</a>
                 </li>
             </ul>
             </div>

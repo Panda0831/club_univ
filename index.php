@@ -14,9 +14,29 @@ try{
         case "home":
             homePage();
             break;
+        case "clubs":
+            clubPage();
+            break;
+
+        case "evenement":
+            eventPage();
+            break;
+
+        case "apropos":
+            aproposPage();
+            break;
+
+        case "connexion":
+            loginPage();
+            break;
+
+        case "inscription":
+            inscriptionPage();
+            break;
         default:
             throw new Exception("Page introuvable");
             break;
+        
     }
 
 } catch (Exception $e) {
