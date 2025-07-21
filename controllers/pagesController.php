@@ -1,5 +1,5 @@
 <?php
-
+require_once"models/eventModel.php";
 function homePage() {
     $datas_page = [
         "title" => "Page d'accueil",
@@ -25,11 +25,13 @@ function clubPage() {
 
 
 function eventPage() {
+    $events= getAllEvent();
     $datas_page = [
         "title" => "Nos evenements",
         "description" => "Pour tout les evenements",
         "view" => "views/pages/eventPage.php",
-        "layout" => "views/components/layout.php"
+        "layout" => "views/components/layout.php",
+        "events"=> $events 
     ];
 
     drawPage($datas_page);
