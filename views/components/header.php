@@ -22,7 +22,7 @@
 
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <div class="d-flex flex-wrap gap-4 mt-3 mt-lg-0">
-          <a href="clubs" class="btn btn-outline-primary">Clubs</a>
+          <a href="home" class="btn btn-outline-primary">Home</a>
           <a href="evenement" class="btn btn-outline-primary">Événement</a>
           <a href="nous" class="btn btn-outline-primary">Qui sommes-nous ?</a>
           <a href="apropos" class="btn btn-outline-primary">À propos</a>

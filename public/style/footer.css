@@ -1,88 +1,80 @@
-.footer {
+.pied-page {
   background-color: #0f172a;
   color: #cbd5e1;
-  padding: 40px 20px;
   font-family: sans-serif;
-  
 }
 
-.footer-container {
+.conteneur-pied {
   display: flex;
   flex-wrap: wrap;
   gap: 2cm;
   justify-content: space-between;
-  max-width: auto;
   margin: auto;
-  
 }
 
-.footer-left {
+.gauche-pied {
   flex: 1 1 200px;
   margin-bottom: 20px;
 }
 
-.footer-left h2 {
+.gauche-pied h2 {
   color: white;
 }
 
-.footer-left img {
+.gauche-pied img {
   width: 80px;
   margin-top: 10px;
 }
 
-.footer-left p {
+.gauche-pied p {
   margin: 15px 0;
   color: #94a3b8;
 }
 
-.social-icons a {
+.icones-sociaux a {
   color: #94a3b8;
   margin-right: 10px;
   font-size: 18px;
   text-decoration: none;
-  
 }
-.social-icons a  img{
-  color: #94a3b8;
-  margin-right: 10px;
-  font-size: 18px;
-  text-decoration: none;
+
+.icones-sociaux a img {
   width: 40px;
 }
 
-.footer-links {
+.liens-pied {
   display: flex;
   flex: 3 1 600px;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.footer-links div {
+.liens-pied div {
   margin: 10px;
   min-width: 150px;
 }
 
-.footer-links h3 {
+.liens-pied h3 {
   color: white;
   margin-bottom: 10px;
 }
 
-.footer-links ul {
+.liens-pied ul {
   list-style: none;
   padding: 0;
 }
 
-.footer-links ul li {
+.liens-pied ul li {
   margin-bottom: 8px;
 }
 
-.footer-links ul li a {
+.liens-pied ul li a {
   color: #94a3b8;
   text-decoration: none;
 }
 
-.footer-bottom {
-  max-height:6px ;
+.bas-pied {
+  max-height: 6px;
   text-align: center;
   margin-top: 30px;
   border-top: 1px solid #1e293b;

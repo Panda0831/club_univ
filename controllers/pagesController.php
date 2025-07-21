@@ -82,3 +82,16 @@ function nousPage() {
 
     drawPage($datas_page);
 }
+
+
+function profilPage() {
+    $datas_page = [
+        "title" => "Profil personnel",
+        "description" => "Naviguer et voir tes CLubs",
+        "view" => "views/pages/profilPage.php",
+        "layout" => "views/components/layout.php"
+    ];
+
+    drawPage($datas_page);
+}
+

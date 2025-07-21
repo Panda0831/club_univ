@@ -100,12 +100,11 @@ input:focus {
 
 
 <body>
-     <link rel="stylesheet" href="public/style/style.css">
   <div class="main-content">
     <div class="container-form">
       <h1>Formulaire</h1>
       <h2>Inscription</h2>
-      <form method="post" action="inscription.php">
+      <form method="POST" action="enregistrement">
         <div class="form-group">
           <label for="nom">Nom :</label>
           <input type="text" id="nom" name="nom" required>
@@ -132,15 +131,15 @@ input:focus {
         </div>
         <div class="form-group">
           <label for="filiere">Filière :</label>
-          <input type="text" id="filiere" name="filiere">
+          <input type="text" id="filiere" name="filiere" required>
         </div>
         <div class="form-group">
           <label for="niveau">Niveau :</label>
-          <input type="text" id="niveau" name="niveau">
+          <input type="text" id="niveau" name="niveau" required>
         </div>
         <div class="form-group">
           <label for="classe">Classe :</label>
-          <input type="text" id="classe" name="classe">
+          <input type="text" id="classe" name="classe" required>
         </div>
         <button type="submit" class="submit-btn">S'inscrire</button>
       </form>
