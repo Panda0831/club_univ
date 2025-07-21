@@ -1,3 +1,173 @@
+<style>
+    /* === GLOBAL === */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f7fa;
+  color: #2c3e50;
+  line-height: 1.7;
+}
+
+h1, h2, h3 {
+  color: #3498db;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+p, li {
+  font-size: 1.05rem;
+  color: #444;
+}
+
+ul {
+  padding-left: 1.5rem;
+}
+
+/* === MAIN CONTAINER === */
+.main-container {
+  padding: 3rem 2rem;
+  max-width: auto;
+  margin: 0 auto;
+  background-color: #ffffff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+/* === HIGHLIGHT BOX === */
+.highlight-box {
+  background-color: #e8f4fd;
+  border-left: 5px solid #3498db;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.highlight-box h3 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+/* === CONTENT CONTAINER === */
+.content-container {
+  padding: 3rem 2rem;
+  max-width: auto;
+  margin: 0 auto 3rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.stats-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  background: #f0faff;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 10px;
+  flex: 1 1 30%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.stat-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #3498db;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+/* === FEATURES === */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.feature-card {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card h3 {
+  font-size: 1.1rem;
+  color: #2c3e50;
+  margin-bottom: 0.8rem;
+}
+
+/* === TEAM SECTION === */
+.team-section ul {
+  list-style: "👤 ";
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* === CONTACT SECTION === */
+.contact-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #ddd;
+}
+
+.opening-hours {
+  background-color: #eef6fb;
+  padding: 1rem;
+  border-left: 4px solid #3498db;
+  margin-top: 1rem;
+  border-radius: 6px;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .stats-box {
+    flex-direction: column;
+  }
+
+  .stat-item {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+</style>
+
 <body>
     <link rel="stylesheet" href="public/style/style.css">
     <section class="main-container">

@@ -69,3 +69,14 @@ function loginPage() {
 
     drawPage($datas_page);
 }
+
+function nousPage() {
+    $datas_page = [
+        "title" => "Qui sommme nous ?",
+        "description" => "pour savoir un peut plus sur nous",
+        "view" => "views/pages/nousPage.php",
+        "layout" => "views/components/layout.php"
+    ];
+
+    drawPage($datas_page);
+}

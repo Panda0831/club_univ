@@ -1,0 +1,76 @@
+/* ===== NAVBAR PERSONNALISÉE ===== */
+
+.navbar-custom {
+  background-color: #ffffff;
+  padding: 1rem 0;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.navbar-brand {
+  color: #3498db;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar-brand:hover {
+  color: #2980b9;
+}
+
+/* Logo */
+.logo-esmia {
+  
+  width: 1cm;
+  object-fit: contain;
+}
+
+/* Boutons */
+.navbar .btn {
+  border-radius: 30px;
+  padding: 0.5rem 1.2rem;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar .btn-outline-primary {
+  border: 2px solid #3498db;
+  color: #3498db;
+  background-color: transparent;
+}
+
+.navbar .btn-outline-primary:hover {
+  background-color: #3498db;
+  color: white;
+}
+
+.navbar .btn-primary {
+  background-color: #3498db;
+  border: 2px solid #3498db;
+  color: white;
+}
+
+.navbar .btn-primary:hover {
+  background-color: #2980b9;
+  border-color: #2980b9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar .d-flex {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .navbar .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo-esmia {
+    height: 30px;
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem !important;
+  }
+}

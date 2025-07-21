@@ -10,7 +10,7 @@
 </head>
 <body class="min-vh-100 d-flex flex-column">
     <?php require_once 'views/components/header.php'; ?>
-    <main class=" container border border-2  flex-grow-1 ">
+    <main class=" container   flex-grow-1 ">
         <?= $content ?>
     </main>
 

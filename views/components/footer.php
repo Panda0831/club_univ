@@ -1,6 +1,6 @@
 <footer class="footer">
     <link rel="stylesheet" href="public/style/footer.css">
-  <div class="footer-container">
+  <div class="footer-container" >
     <div class="footer-left">
       <h2>ESMIA UNIVERSITY</h2>
       <img src="public/img/esmia_fond_noir.webp" alt="Logo ESMIA">
@@ -49,7 +49,7 @@
     </div>
   </div>
 
-  <div class="footer-bottom">
+  <div class="footer-bottom" style="height:6px;">
     <p>© 2025 ESMIA University. Tous droits réservés.</p>
   </div>
 </footer>

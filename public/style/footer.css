@@ -3,6 +3,7 @@
   color: #cbd5e1;
   padding: 40px 20px;
   font-family: sans-serif;
+  
 }
 
 .footer-container {
@@ -10,8 +11,9 @@
   flex-wrap: wrap;
   gap: 2cm;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: auto;
   margin: auto;
+  
 }
 
 .footer-left {
@@ -80,10 +82,10 @@
 }
 
 .footer-bottom {
+  max-height:6px ;
   text-align: center;
   margin-top: 30px;
   border-top: 1px solid #1e293b;
-  padding-top: 20px;
   font-size: 14px;
   color: #64748b;
 }

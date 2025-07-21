@@ -33,6 +33,10 @@ try{
         case "inscription":
             inscriptionPage();
             break;
+        
+        case "nous":
+            nousPage();
+            break;
             
         default:
             throw new Exception("Page introuvable");
