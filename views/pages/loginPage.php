@@ -11,7 +11,7 @@
         <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
       </div>
       <div class="btn-group">
-        <a href="inscription.php">S'inscrire</a>
+        <a href="inscription">S'inscrire</a>
         <button type="submit">Se connecter</button>
       </div>
     </form>

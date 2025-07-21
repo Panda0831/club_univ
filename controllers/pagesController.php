@@ -47,7 +47,7 @@ function aproposPage() {
 }
 
 
-function loginPage() {
+function inscriptionPage() {
     $datas_page = [
         "title" => "Page d' inscription",
         "description" => "Pour s' inscrire ",
@@ -59,10 +59,10 @@ function loginPage() {
 }
 
 
-function inscriptionPage() {
+function loginPage() {
     $datas_page = [
         "title" => "Page de connexion",
-        "description" => "Pour s' inscrire et se connecter",
+        "description" => "Pour  se connecter",
         "view" => "views/pages/loginPage.php",
         "layout" => "views/components/layout.php"
     ];
