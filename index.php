@@ -45,6 +45,16 @@ try {
                 return;
             }
             break;
+        case "ajoutImage":
+            $imageController = new UtilisateurController();
+            if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                $imageController->uploadImage();
+                return;
+            }
+            break;
+        case "profilImage" :
+            ajoutImagePage();
+            break;
         default:
             throw new Exception("Page introuvable");
             break;

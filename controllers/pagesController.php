@@ -116,3 +116,14 @@ function clubPage()
 
     drawPage($datas_page);
 }
+function ajoutImagePage()
+{
+    $datas_page = [
+        "title" => "Ajouter une image",
+        "description" => "Ajouter une image de profil",
+        "view" => "views/pages/ajoutImagePage.php",
+        "layout" => "views/components/layout.php"
+    ];
+
+    drawPage($datas_page);
+}

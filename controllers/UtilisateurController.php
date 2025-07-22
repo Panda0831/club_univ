@@ -52,4 +52,30 @@ class UtilisateurController
             }
         }
     }
+    public function uploadImage()
+    {
+        session_start();
+        if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            $targetDir = 'public/img/';
+            $targetFile = $targetDir . basename($_FILES['image']['name']);
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
+            // Mettre à jour l'image de l'utilisateur dans la session
+            $_SESSION['utilisateur']['image'] = $targetFile;
+
+            // Mettre à jour l'image dans la base de données
+            if (isset($_SESSION['utilisateur']['nie'])) {
+                $utilisateurModel = new Utilisateur();
+                $utilisateurModel->updateImage($_SESSION['utilisateur']['id'], $targetFile);
+            }
+
+            header('Location: profil'); // Redirection vers la page de profil
+            exit;
+            } else {
+            $_SESSION['error'] = 'Échec du téléchargement de l’image.';
+            }
+        } else {
+            $_SESSION['error'] = 'Aucun fichier sélectionné ou erreur lors du téléchargement.';
+        }
+    }
+
 }
