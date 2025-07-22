@@ -221,7 +221,7 @@
             </div>
         </section>
         </div>
-            <div class="highlight-box">
+        <div class="highlight-box">
             <h3>Pourquoi rejoindre un club à l'ESMIA ?</h3>
             <ul>
                 <li>Développer des compétences transversales (leadership, travail d'équipe)</li>

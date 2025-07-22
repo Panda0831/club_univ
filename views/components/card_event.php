@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
-<div class="d-flex justify-content-center mt-5">
-  <div class="card shadow-lg rounded-4 border-0" style="width: 700px; overflow: hidden;">
+<div class="d-flex justify-content-center mt-5" style="height:800px;">
+  <div class="card shadow-lg rounded-4 border-0" style="width: 600px; overflow: hidden;">
 
     <!-- Image de couverture -->
     <img src="public/<?= htmlspecialchars($event['image']) ?>" 

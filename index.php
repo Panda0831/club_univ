@@ -1,6 +1,6 @@
 <?php 
 require_once("controllers/pagesController.php");
-require_once("controllers/crudController.php");
+
 require_once("controllers/utilities.php");
 try{
 

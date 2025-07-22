@@ -95,7 +95,7 @@ function profilPage()
         "title" => "Profil personnel",
         "description" => "Naviguer et voir tes CLubs",
         "view" => "views/pages/profilPage.php",
-        "layout" => "views/components/layout.php"
+        "layout" => "views/components/profil.php"
     ];
 
     drawPage($datas_page);
