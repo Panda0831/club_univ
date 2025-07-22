@@ -14,9 +14,7 @@ try{
         case "home":
             homePage();
             break;
-        case "clubs":
-            clubPage();
-            break;
+
         case "evenement":
             eventPage();
             break;
@@ -36,9 +34,46 @@ try{
             nousPage();
             break;
 
+            case "ajoutUser":
+            $userController = new UtilisateurController();
+            if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                $userController->register();
+                return;
+            }
+            break;
+        case "ajoutImage":
+            $imageController = new UtilisateurController();
+            if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                $imageController->uploadImage();
+                return;
+            }
+            break;
+
+
         case "profil":
             profilPage();
             break;
+
+        case "profilResponsable":
+            profilResponsablePage();
+            break;
+
+        case "mesClubs":
+            mesClubsPage();
+            break;
+
+        case "aide":
+            aidePage();
+            break;
+
+        case"mesEvenement":
+            mesEvenementPage();
+            break;
+
+        case "notification":
+            notificationPage();
+            break;
+
         case "logout":
             session_destroy();
             header("Location: home");

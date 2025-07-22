@@ -25,16 +25,19 @@
 
 <body>
 <section class="p-4">
+
   <h1>Mon Profil</h1>
   <div class="card mt-4 shadow-sm p-4">
     <div class="d-flex gap-4">
       <img src="public/img/user.png" class="rounded-circle" width="100" alt="Photo" height="100">
       <div>
         <h3>Mon profil perso</h3>
-        <p>Nom: </p>
-        <p>Prenom:</p>
-        <p>Nie:</p>
-        <p>Email : </p>
+        <p>Nom: <?= htmlspecialchars($_SESSION['utilisateur']['nom']) ?></p>
+        <p>Prenom: <?= htmlspecialchars($_SESSION['utilisateur']['prenom']) ?></p>
+        <p>Nie: <?= htmlspecialchars($_SESSION['utilisateur']['nie']) ?> </p>
+        <p>Filiere: <?= htmlspecialchars($_SESSION['utilisateur']['filiere']) ?> </p>
+        <p>Niveau: <?= htmlspecialchars($_SESSION['utilisateur']['niveau']) ?> </p>
+        <p>Email : <?= htmlspecialchars($_SESSION['utilisateur']['email']) ?> </p>
       </div>
     </div>
   </div>

@@ -8,8 +8,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <title><?= htmlspecialchars($title) ?></title>
-
-              <style>
+      <style>
         /* Bouton du menu dropdown */
     #dropdownProfil {
       background-color: #f8f9fa;
@@ -95,8 +94,8 @@
 
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <div class="d-flex flex-wrap gap-4 mt-3 mt-lg-0 align-items-center">
-          <a href="mesClubs" class="btn btn-outline-primary">Mes clubs</a>
-          <a href="mesEvenement" class="btn btn-outline-primary">Événement</a>
+          <a href="mesClubs" class="btn btn-outline-primary">clubs</a>
+          <a href="mesEvenement" class="btn btn-outline-primary">Évents</a>
           <a href="aide" class="btn btn-outline-primary">Aide</a>
 
           <!-- 🔔 Icône de notification -->
@@ -115,6 +114,9 @@
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownProfil">
               <li><a class="dropdown-item" href="profil">Voir mon profil</a></li>
+              <li><a class="dropdown-item" href="profil">Ajouter évènement</a></li>
+              <li><a class="dropdown-item" href="profil">Lister membres</a></li>
+
               <li><a class="dropdown-item" href="parametres">Paramètres</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item text-danger" href="logout">Déconnexion</a></li>

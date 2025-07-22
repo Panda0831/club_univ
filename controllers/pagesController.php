@@ -1,6 +1,6 @@
 <?php
 require_once "models/eventModel.php";
-require_once "models/ClubModel.php";
+
 require_once "controllers/UtilisateurController.php";
 
 function homePage()
@@ -100,16 +100,63 @@ function profilPage()
 
     drawPage($datas_page);
 }
-function clubPage()
+
+function mesClubsPage()
 {
-    $clubModel = new Club();
-    $clubs = $clubModel->getAllClubs();
     $datas_page = [
-        "title" => "Nos Clubs",
-        "description" => "Découvrez nos clubs",
-        "view" => "views/pages/clubsPage.php",
-        "layout" => "views/components/layout.php",
-        "clubs" => $clubs
+        "title" => "Voir mes Clubs",
+        "description" => "Navigue et voit tes CLubs",
+        "view" => "views/pages/mesClubsPage.php",
+        "layout" => "views/components/profil.php"
+    ];
+
+    drawPage($datas_page);
+}
+
+function aidePage()
+{
+    $datas_page = [
+        "title" => "Page Aide",
+        "description" => "Pour t' aider à mieux comprendre l' application",
+        "view" => "views/pages/aidePage.php",
+        "layout" => "views/components/profil.php"
+    ];
+
+    drawPage($datas_page);
+}
+
+function mesEvenementPage()
+{
+    $datas_page = [
+        "title" => "Page évenements",
+        "description" => "Pour voir les activités de tes Clubs",
+        "view" => "views/pages/mesEvenementPage.php",
+        "layout" => "views/components/profil.php"
+    ];
+
+    drawPage($datas_page);
+}
+
+function notificationPage()
+{
+    $datas_page = [
+        "title" => "Page de notification",
+        "description" => "Pour recevoir les notifications et message de vos clubs",
+        "view" => "views/pages/notificationPage.php",
+        "layout" => "views/components/profil.php"
+    ];
+
+    drawPage($datas_page);
+}
+
+
+function profilResponsablePage()
+{
+    $datas_page = [
+        "title" => "Profil personnel du responsable",
+        "description" => "Pour gere les clubs",
+        "view" => "views/pages/profilResponsablePage.php",
+        "layout" => "views/components/responsable.php"
     ];
 
     drawPage($datas_page);
