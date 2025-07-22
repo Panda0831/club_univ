@@ -21,7 +21,10 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<main class="p-4">
+
+
+<body>
+<section class="p-4">
   <h1>Mon Profil</h1>
   <div class="card mt-4 shadow-sm p-4">
     <div class="d-flex gap-4">
@@ -35,7 +38,7 @@
       </div>
     </div>
   </div>
-</main>
+</section>
 
 <main class="p-4">
   <h1>Tableau de bord</h1>
@@ -66,7 +69,4 @@
     </div>
   </div>
 </main>
-
-</div> <!-- .flex-grow-1 -->
-</div> <!-- .d-flex -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>

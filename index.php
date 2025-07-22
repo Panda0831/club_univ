@@ -39,6 +39,9 @@ try{
         case "profil":
             profilPage();
             break;
+        case "logout":
+            session_destroy();
+            header("Location: home");
             
         default:
             throw new Exception("Page introuvable");

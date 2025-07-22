@@ -119,7 +119,7 @@ body {
 
 <main class="main-content">
     <link rel="stylesheet" href="public/style/style.css">
-    <form class="form-container" action="" method="post" novalidate>
+    <form class="form-container"  method="post" novalidate>
       <h1>Connexion</h1>
       <div class="input-group">
         <label for="nie">Identifiant :</label>

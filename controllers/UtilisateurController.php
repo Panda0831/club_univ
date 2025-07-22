@@ -10,16 +10,24 @@ class UtilisateurController {
             $password = $_POST['password'];
 
             $utilisateurModel = new Utilisateur();
-            $utilisateur = $utilisateurModel->getUserById($nie);
+            $utilisateur = $utilisateurModel->getUserByNie($nie);
 
             if ($utilisateur && password_verify($password, $utilisateur['mot_de_passe'])) {
                 session_start();
                 $_SESSION['utilisateur'] = $utilisateur;
-                header('Location: home'); // à adapter selon ta page d’accueil
+
+                // Redirection selon rôle
+                switch ($utilisateur['role']) {
+                    case 'responsable':
+                        header('Location: profil'); break;
+                    case 'superadmin':
+                        header('Location: profil'); break;
+                    default:
+                        header('Location: profil'); break;
+                }
                 exit;
-            } else {
-                $error = 'Identifiants incorrects.';
             }
+
         }
     }
 
