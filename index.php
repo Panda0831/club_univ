@@ -27,7 +27,7 @@ try {
         case "connexion":
             loginPage();
             break;
-
+        
         case "inscription":
             inscriptionPage();
             break;

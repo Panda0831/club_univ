@@ -49,7 +49,7 @@ function aproposPage()
 
 function inscriptionPage()
 {
-   
+
     $datas_page = [
         "title" => "Page d' inscription",
         "description" => "Pour s' inscrire ",
@@ -62,6 +62,12 @@ function inscriptionPage()
 
 function loginPage()
 {
+
+    $userController = new UtilisateurController();
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $userController->login();
+        exit;
+    }
     $datas_page = [
         "title" => "Page de connexion",
         "description" => "Pour  se connecter",

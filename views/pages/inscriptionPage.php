@@ -123,7 +123,7 @@ input:focus {
         </div>
         <div class="form-group">
           <label for="password">Mot de passe :</label>
-          <input type="password" id="password" name="password" required>
+          <input type="password" id="password" name="mot_de_passe" required>
         </div>
         <div class="form-group">
           <label for="confirm_password">Confirmer le mot de passe :</label>
