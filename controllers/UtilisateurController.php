@@ -38,7 +38,7 @@ class UtilisateurController {
             $utilisateurModel = new Utilisateur();
             $success = $utilisateurModel->create($data);
             if ($success) {
-                header('Location: login');
+                header('Location: inscription'); // Redirection après l'inscription réussie
                 exit;
             } else {
                 $error = 'Échec de l’inscription.';

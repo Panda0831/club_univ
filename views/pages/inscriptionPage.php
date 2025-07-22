@@ -104,7 +104,7 @@ input:focus {
     <div class="container-form">
       <h1>Formulaire</h1>
       <h2>Inscription</h2>
-      <form method="POST" action="enregistrement">
+      <form method="POST" action="ajoutUser">
         <div class="form-group">
           <label for="nom">Nom :</label>
           <input type="text" id="nom" name="nom" required>

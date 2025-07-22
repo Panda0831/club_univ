@@ -49,11 +49,7 @@ function aproposPage()
 
 function inscriptionPage()
 {
-    $userController = new UtilisateurController();
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        $userController->register();
-        return;
-    }
+   
     $datas_page = [
         "title" => "Page d' inscription",
         "description" => "Pour s' inscrire ",
