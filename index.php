@@ -94,6 +94,13 @@ try {
             session_abort();
             header("Location: home");
             break;
+        case "inscrireUserClub":
+            $clubController = new InscriptionClubController();
+            if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                $clubController->inscrireUtilisateur();
+                return;
+            }
+            break;
 
         default:
             throw new Exception("Page introuvable");

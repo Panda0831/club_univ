@@ -212,7 +212,7 @@
             <div class="club-info">
               <h3>Club Sport</h3>
               <p>Venez nous rejoindre pour faire du sport et garantir un bonne santé</p>
-              <a href="sport" class="btn">Voir plus</a>
+              <a href="" class="btn">Voir plus</a>
             </div>
           </div>
           <div class="club-card">
