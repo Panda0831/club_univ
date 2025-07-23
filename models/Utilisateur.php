@@ -78,6 +78,9 @@ class Utilisateur
     $stmt->execute([$id]);
     return $stmt->fetch(PDO::FETCH_ASSOC) ?: false;
 }
+public function InscriptionClub(){
+    
+}
 
 }
 
