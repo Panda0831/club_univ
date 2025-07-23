@@ -115,7 +115,7 @@
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownProfil">
               <li><a class="dropdown-item" href="profil">Voir mon profil</a></li>
-              <li><a class="dropdown-item" href="parametres">Paramètres</a></li>
+              <li><a class="dropdown-item" href="ProfilUpdate">Modifier profil</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item text-danger" href="logout">Déconnexion</a></li>
             </ul>

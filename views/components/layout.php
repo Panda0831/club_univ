@@ -13,7 +13,11 @@
     <title><?php echo $title ?></title>
 </head>
 <body class="min-vh-100 d-flex flex-column">
+    <?php if(isset($_SESSION['utilisateur'])){
+        require_once 'views/components/profil.php';
+    }else{?>
     <?php require_once 'views/components/header.php'; ?>
+    <?php } ?>
     <main class=" container   flex-grow-1 ">
         <?= $content ?>
     </main>

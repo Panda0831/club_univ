@@ -9,7 +9,7 @@ class PDOModels
         if ($pdo === null) {
             $dsn = "mysql:host=localhost;dbname=gestion_club;charset=utf8mb4";
             $username = "root";
-            $password = "Ryan";
+            $password = "";
 
             try {
                 $pdo = new PDO($dsn, $username, $password);

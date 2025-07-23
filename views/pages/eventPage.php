@@ -39,7 +39,6 @@
 
 <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel" style="margin-left: 7px ;">
   <div class="carousel-inner">
-
     <?php foreach ($events as $index => $event): ?>
       <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
         <div class="d-flex justify-content-center">

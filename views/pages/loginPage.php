@@ -125,10 +125,18 @@
 
 </style>
 
+
 <main class="main-content">
   <link rel="stylesheet" href="public/style/style.css">
   <form class="form-container" method="post" novalidate>
     <h1>Connexion</h1>
+  <?php
+session_start();
+if (!empty($_SESSION['login_error'])) {
+  echo "<p class='error-message'>" . $_SESSION['login_error'] . "</p>";
+  unset($_SESSION['login_error']);
+}
+?>
     <div class="input-group">
       <label for="nie">Identifiant :</label>
       <input type="text" id="nie" name="nie" placeholder="Entrez votre NIE" required value="<?= isset($_POST['nie']) ? htmlspecialchars($_POST['nie']) : '' ?>">

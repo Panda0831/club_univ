@@ -14,6 +14,22 @@ function homePage()
 
     drawPage($datas_page);
 }
+function modifyProfilPage()
+{
+    $userController = new UtilisateurController();
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $userController->updateProfile();
+        exit;
+    }
+    $datas_page = [
+        "title" => "Modifier mon profil",
+        "description" => "Pour modifier votre profil",
+        "view" => "views/pages/ModifyProfil.php",
+        "layout" => "views/components/layout.php"
+    ];
+
+    drawPage($datas_page);
+}
 
 
 
@@ -66,6 +82,12 @@ function inscriptionPage()
 
 function loginPage()
 {
+
+    $userController = new UtilisateurController();
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $userController->login();
+        exit;
+    }
     $datas_page = [
         "title" => "Page de connexion",
         "description" => "Pour  se connecter",
@@ -157,6 +179,17 @@ function profilResponsablePage()
         "description" => "Pour gere les clubs",
         "view" => "views/pages/profilResponsablePage.php",
         "layout" => "views/components/responsable.php"
+    ];
+
+    drawPage($datas_page);
+}
+function ajoutImagePage()
+{
+    $datas_page = [
+        "title" => "Ajouter une image",
+        "description" => "Ajouter une image de profil",
+        "view" => "views/pages/ajoutImagePage.php",
+        "layout" => "views/components/layout.php"
     ];
 
     drawPage($datas_page);

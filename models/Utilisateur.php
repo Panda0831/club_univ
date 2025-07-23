@@ -47,18 +47,16 @@ class Utilisateur
     }
     public function update($data)
     {
-        $req = "UPDATE UTILISATEUR SET nom = :nom, prenom = :prenom, nie = :nie, email = :email, filiere = :filiere, niveau = :niveau WHERE id_utilisateur = :id";
+        $req = "UPDATE UTILISATEUR SET nom = :nom, prenom = :prenom, email = :email, filiere = :filiere, niveau = :niveau WHERE id_utilisateur = :id";
         $stmt = $this->conn->prepare($req);
         $stmt->bindParam(':id', $data['id_utilisateur']);
         $stmt->bindParam(':nom', $data['nom']);
         $stmt->bindParam(':prenom', $data['prenom']);
-        $stmt->bindParam(':nie', $data['nie']);
         $stmt->bindParam(':email', $data['email']);
         $stmt->bindParam(':filiere', $data['filiere']);
         $stmt->bindParam(':niveau', $data['niveau']);
         return $stmt->execute();
     }
-
     public function delete($id)
     {
         $req = "DELETE FROM UTILISATEUR WHERE id_utilisateur = :id";
@@ -74,6 +72,13 @@ class Utilisateur
         $stmt->bindParam(':image', $imagePath);
         return $stmt->execute();
     }
+    public function getUserById($id)
+{
+    $stmt = $this->conn->prepare("SELECT * FROM UTILISATEUR WHERE id_utilisateur = ?");
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC) ?: false;
+}
+
 }
 
 
