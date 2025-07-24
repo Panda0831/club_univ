@@ -169,9 +169,9 @@
 
   <div class="page-clubs">
     <section class="description">
-      
+
       <?php session_start(); ?>
-      <?php if (isset($_SESSION['utilisateur']) ){ ?>
+      <?php if (isset($_SESSION['utilisateur'])) { ?>
         <h1>Bienvenue, <?= htmlspecialchars($_SESSION['utilisateur']['nom']) ?> !</h1>
       <?php } else { ?>
         <h1>Bienvenue sur la page des clubs de l'ESMIA !</h1>
@@ -196,6 +196,10 @@
             <div class="club-info">
               <h3>Club Événements</h3>
               <p>Anime la vie du campus en organisant des événements festifs, culturels et solidaires.</p>
+              <form method="POST" action="inscrireClub">
+                <input type="hidden" name="id_club" value="1">
+                <button type="submit" class="btn">S'inscrire</button>
+              </form>
               <a href="evenement" class="btn">Voir plus</a>
             </div>
           </div>
@@ -204,6 +208,10 @@
             <div class="club-info">
               <h3>Club Hackathon</h3>
               <p>L'informatique n' est pas simplement fait pour les matheux</p>
+              <form method="POST" action="inscrireClub">
+                <input type="hidden" name="id_club" value="2"> <!-- ID du club Événements -->
+                <button type="submit" class="btn">S'inscrire</button>
+              </form>
               <a href="hackaton" class="btn">Voir plus</a>
             </div>
           </div>
@@ -212,7 +220,11 @@
             <div class="club-info">
               <h3>Club Sport</h3>
               <p>Venez nous rejoindre pour faire du sport et garantir un bonne santé</p>
-              <a href="" class="btn">Voir plus</a>
+              <form method="POST" action="inscrireClub">
+                <input type="hidden" name="id_club" value="4"> <!-- ID du club Événements -->
+                <button type="submit" class="btn">S'inscrire</button>
+              </form>
+              <a href="sport" class="btn">Voir plus</a>
             </div>
           </div>
           <div class="club-card">
@@ -220,6 +232,10 @@
             <div class="club-info">
               <h3>Club Danse</h3>
               <p>Découvre et pratique différents styles de danse lors d'ateliers et de spectacles.</p>
+              <form method="POST" action="inscrireClub">
+                <input type="hidden" name="id_club" value="3"> <!-- ID du club Événements -->
+                <button type="submit" class="btn">S'inscrire</button>
+              </form>
               <a href="danse" class="btn">Voir plus</a>
             </div>
           </div>

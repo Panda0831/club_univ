@@ -123,17 +123,34 @@ function profilPage()
     drawPage($datas_page);
 }
 
-function mesClubsPage()
-{
-    $datas_page = [
-        "title" => "Voir mes Clubs",
-        "description" => "Navigue et voit tes CLubs",
-        "view" => "views/pages/mesClubsPage.php",
-        "layout" => "views/components/profil.php"
-    ];
+//  function mesClubsPage()
+// {
+//     session_start();
 
-    drawPage($datas_page);
-}
+//     if (!isset($_SESSION['utilisateur'])) {
+//         header('Location: connexion');
+//         exit();
+//     }
+
+//     $id_utilisateur = $_SESSION['utilisateur']['id_utilisateur'];
+
+//     // Récupérer les clubs depuis le modèle
+//     require_once 'models/InscriptionClubModel.php';
+//     $inscriptionModel = new InscriptionClubModel();
+//     $mesClubs = $inscriptionModel->getClubsParUtilisateur($id_utilisateur);
+
+//     // Passer les clubs à la vue
+//     $datas_page = [
+//         "title" => "Voir mes Clubs",
+//         "description" => "Navigue et voit tes Clubs",
+//         "view" => "views/pages/mesClubsPage.php",
+//         "layout" => "views/components/profil.php",
+//         "mesClubs" => $mesClubs
+//     ];
+
+//     drawPage($datas_page);
+// }
+
 
 function aidePage()
 {
@@ -190,6 +207,48 @@ function ajoutImagePage()
         "description" => "Ajouter une image de profil",
         "view" => "views/pages/ajoutImagePage.php",
         "layout" => "views/components/layout.php"
+    ];
+
+    drawPage($datas_page);
+}
+function danse()
+{
+    $datas_page = [
+        "title" => "Club de Danse",
+        "description" => "Rejoins le club de danse et libère ton énergie à travers le rythme et les mouvements !",
+        "view" => "views/pages/danse.php",
+        "layout" => "views/components/layout.php"
+    ];
+
+    drawPage($datas_page);
+}
+function gererMonClubPage()
+{
+    // Charger le modèle et récupérer les clubs dont l'utilisateur est responsable
+    session_start();
+    if (!isset($_SESSION['utilisateur'])) {
+        header("Location: index.php"); // Ou vers la page de connexion
+        exit;
+    }
+
+    $utilisateur_id = $_SESSION['utilisateur']['id_utilisateur'];
+    require_once 'models/ClubModel.php';
+    $clubModel = new ClubModel();
+
+    $clubs = $clubModel->clubsResponsable($utilisateur_id);
+
+    // Récupérer les membres pour chaque club
+    foreach ($clubs as &$club) {
+        $club['membres'] = $clubModel->getMembresDuClub($club['id_club']);
+    }
+    unset($club);
+
+    $datas_page = [
+        "title" => "Gérer mes clubs",
+        "description" => "Gestion de mes clubs",
+        "view" => "views/clubs/gererClubs.php",  // Ta vue existante
+        "layout" => "views/components/layout.php", // ou ton layout commun
+        "clubs" => $clubs,
     ];
 
     drawPage($datas_page);

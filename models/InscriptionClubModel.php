@@ -1,70 +1,52 @@
 <?php
-
-
-
-
 require_once "models/pdoModels.php";
+
 class InscriptionClubModel
 {
-    public $conn;
+    private $conn;
 
     public function __construct()
     {
         $db = new PDOModels();
         $this->conn = $db->setDB();
     }
-    public function getAllInscriptions()
+
+    // Récupère tous les clubs où un utilisateur est inscrit (IDs)
+    public function getClubsInscritsParUtilisateur($id_utilisateur)
     {
-        $req = "SELECT * FROM INSCRIPTION_CLUB";
-        $stmt = $this->conn->prepare($req);
-        $stmt->execute();
-        $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $stmt->closeCursor();
-        return $datas;
+        $sql = "SELECT id_club FROM INSCRIPTION_CLUB WHERE id_utilisateur = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id_utilisateur]);
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
-    public function est_inscrit($id_utilisateur, $id_club)
+
+    // Vérifie si un utilisateur est déjà inscrit à un club
+    public function dejaInscrit($id_utilisateur, $id_club)
     {
-        $req = "SELECT * FROM INSCRIPTION_CLUB WHERE id_utilisateur = :id_utilisateur AND id_club = :id_club";
-        $stmt = $this->conn->prepare($req);
-        $stmt->bindParam(':id_utilisateur', $id_utilisateur);
-        $stmt->bindParam(':id_club', $id_club); 
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC) !== false;
+        $sql = "SELECT 1 FROM INSCRIPTION_CLUB WHERE id_utilisateur = ? AND id_club = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id_utilisateur, $id_club]);
+        return $stmt->rowCount() > 0;
     }
+
+    // Inscrit un utilisateur dans un club
     public function inscrireUtilisateur($id_utilisateur, $id_club)
     {
-        $req = "INSERT INTO INSCRIPTION_CLUB (id_utilisateur, id_club) VALUES (:id_utilisateur, :id_club)";
-        $stmt = $this->conn->prepare($req);
-        $stmt->bindParam(':id_utilisateur', $id_utilisateur);
-        $stmt->bindParam(':id_club', $id_club);
-        return $stmt->execute();
+        // Protection contre doublon possible si tu préfères (éviter erreur SQL)
+        if (!$this->dejaInscrit($id_utilisateur, $id_club)) {
+            $sql = "INSERT INTO INSCRIPTION_CLUB (id_utilisateur, id_club) VALUES (?, ?)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([$id_utilisateur, $id_club]);
+            return true;
+        }
+        return false;
     }
 
-    public function listerInscriptionsParUtilisateur($id_utilisateur)
-    {
-        $req = "SELECT * FROM INSCRIPTION_CLUB WHERE id_utilisateur = :id_utilisateur";
-        $stmt = $this->conn->prepare($req);
-        $stmt->bindParam(':id_utilisateur', $id_utilisateur);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-
-    public function listerInscriptionsParClub($id_club)
-    {
-        $req = "SELECT * FROM INSCRIPTION_CLUB WHERE id_club = :id_club";
-        $stmt = $this->conn->prepare($req);
-        $stmt->bindParam(':id_club', $id_club);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    // Supprime l'inscription d'un utilisateur à un club
     public function supprimerInscription($id_utilisateur, $id_club)
     {
-        $req = "DELETE FROM INSCRIPTION_CLUB WHERE id_utilisateur = :id_utilisateur AND id_club = :id_club";
-        $stmt = $this->conn->prepare($req);
-        $stmt->bindParam(':id_utilisateur', $id_utilisateur);
-        $stmt->bindParam(':id_club', $id_club);
-        return $stmt->execute();
+        $sql = "DELETE FROM INSCRIPTION_CLUB WHERE id_utilisateur = ? AND id_club = ?";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([$id_utilisateur, $id_club]);
     }
 }
-?>

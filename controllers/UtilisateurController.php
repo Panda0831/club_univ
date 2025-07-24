@@ -3,27 +3,45 @@ require_once 'models/Utilisateur.php';
 
 class UtilisateurController
 {
+    // Méthode privée pour vérifier la session utilisateur
+    private function checkLogin()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        if (!isset($_SESSION['utilisateur'])) {
+            header('Location: connexion');
+            exit;
+        }
+        return $_SESSION['utilisateur'];
+    }
+
     public function login()
     {
-        $error = '';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
 
-            $nie = $_POST['nie'];
-            $password = $_POST['mot_de_passe'];
+            $nie = $_POST['nie'] ?? '';
+            $password = $_POST['mot_de_passe'] ?? '';
 
             $utilisateurModel = new Utilisateur();
             $utilisateur = $utilisateurModel->getUserByNie($nie);
+
             if ($utilisateur && password_verify($password, $utilisateur['mot_de_passe'])) {
-                session_start();
                 $_SESSION['utilisateur'] = $utilisateur;
-                header('Location: home'); // à adapter selon ta page d’accueil
+
+                // Redirection selon le rôle
+                if (isset($utilisateur['role']) && $utilisateur['role'] === 'responsable') {
+                    header('Location: responsable'); // Page dédiée aux responsables
+                } else {
+                    header('Location: profil'); // Page profil normal
+                }
                 exit;
             } else {
-                session_start();
-                // En cas d'erreur, on stocke le message dans la session pour l'afficher sur la page de connexion
-                // et on redirige vers la page de connexio
                 $_SESSION['error'] = 'Identifiant ou mot de passe incorrect.';
-                header('Location: connexion'); // Redirection vers la page de connexion
+                header('Location: connexion');
                 exit;
             }
         }
@@ -34,37 +52,32 @@ class UtilisateurController
         $error = '';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = [
-                'nom' => htmlspecialchars($_POST['nom']) ?? '',
-                'prenom' => htmlspecialchars($_POST['prenom']) ?? '',
-                'nie' => htmlspecialchars($_POST['nie'])    ?? '',
-                'email' => htmlspecialchars($_POST['email']) ?? '',
-                'filiere' => htmlspecialchars($_POST['filiere']) ?? '',
-                'niveau' => htmlspecialchars($_POST['niveau']) ?? '',
-                'mot_de_passe' => password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT)
+                'nom' => htmlspecialchars($_POST['nom'] ?? ''),
+                'prenom' => htmlspecialchars($_POST['prenom'] ?? ''),
+                'nie' => htmlspecialchars($_POST['nie'] ?? ''),
+                'email' => htmlspecialchars($_POST['email'] ?? ''),
+                'filiere' => htmlspecialchars($_POST['filiere'] ?? ''),
+                'niveau' => htmlspecialchars($_POST['niveau'] ?? ''),
+                'mot_de_passe' => password_hash($_POST['mot_de_passe'] ?? '', PASSWORD_DEFAULT)
             ];
             $utilisateurModel = new Utilisateur();
             $success = $utilisateurModel->create($data);
             if ($success) {
-                header('Location: home'); // Redirection après l'inscription réussie
+                header('Location: home'); // Redirection après inscription réussie
                 exit;
             } else {
                 $error = 'Échec de l’inscription.';
+                // Tu peux gérer l'affichage de $error dans la vue si besoin
             }
         }
     }
 
     public function updateProfile()
     {
-        session_start();
-       
-
-        if (!isset($_SESSION['utilisateur'])) {
-            header('Location: connexion');
-            exit();
-        }
+        $utilisateur = $this->checkLogin();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $ancien = $_SESSION['utilisateur'];
+            $ancien = $utilisateur;
 
             $data = [
                 'id_utilisateur' => $ancien['id_utilisateur'],
@@ -75,20 +88,18 @@ class UtilisateurController
                 'filiere' => !empty(trim($_POST['filiere'])) ? htmlspecialchars(trim($_POST['filiere'])) : $ancien['filiere'],
                 'niveau' => !empty(trim($_POST['niveau'])) ? htmlspecialchars(trim($_POST['niveau'])) : $ancien['niveau'],
             ];
-            // Mettre à jour le modèle Utilisateur
+
             $utilisateurModel = new Utilisateur();
             $success = $utilisateurModel->update($data);
-            // Si la mise à jour est réussie, on recharge les informations de l'utilisateur
-            if ($success) {
-                var_dump($ancien['id_utilisateur']);
-                $nouvelUtilisateur = $utilisateurModel->getUserById($data['id_utilisateur']);
 
+            if ($success) {
+                // Recharge les infos à jour
+                $nouvelUtilisateur = $utilisateurModel->getUserById($data['id_utilisateur']);
                 if ($nouvelUtilisateur) {
                     $_SESSION['utilisateur'] = $nouvelUtilisateur;
                     header('Location: profil');
                     exit;
                 } else {
-                    // Ne pas écraser la session si la récupération échoue
                     $_SESSION['error'] = "Profil mis à jour, mais impossible de recharger les infos.";
                     header('Location: profil');
                     exit;
@@ -103,27 +114,72 @@ class UtilisateurController
 
     public function uploadImage()
     {
-        session_start();
+        $utilisateur = $this->checkLogin();
+
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $targetDir = 'public/img/';
-            $targetFile = $targetDir . basename($_FILES['image']['name']);
+            $filename = basename($_FILES['image']['name']);
+
+            // Optionnel : sécuriser le nom du fichier (ex : uniqid + extension)
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            $filename = uniqid('img_') . '.' . $ext;
+
+            $targetFile = $targetDir . $filename;
+
             if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
-                // Mettre à jour l'image de l'utilisateur dans la session
                 $_SESSION['utilisateur']['image'] = $targetFile;
 
-                // Mettre à jour l'image dans la base de données
-                if (isset($_SESSION['utilisateur']['nie'])) {
-                    $utilisateurModel = new Utilisateur();
-                    $utilisateurModel->updateImage($_SESSION['utilisateur']['id'], $targetFile);
-                }
+                $utilisateurModel = new Utilisateur();
+                $utilisateurModel->updateImage($utilisateur['id_utilisateur'], $targetFile);
 
-                header('Location: profil'); // Redirection vers la page de profil
+                header('Location: profil'); // Redirection vers profil
                 exit;
             } else {
                 $_SESSION['error'] = 'Échec du téléchargement de l’image.';
+                header('Location: profilImage');
+                exit;
             }
         } else {
             $_SESSION['error'] = 'Aucun fichier sélectionné ou erreur lors du téléchargement.';
+            header('Location: profilImage');
+            exit;
         }
     }
+
+    public function profil()
+    {
+        $utilisateur = $this->checkLogin();
+
+        $utilisateur_id = $utilisateur['id_utilisateur'];
+
+        require_once 'models/Utilisateur.php';
+        $model = new Utilisateur();
+
+        $nombreClubs = $model->getNombreClubsInscrits($utilisateur_id);
+
+        require 'views/pages/profilPage.php';
+    }
+    public function gererMonClub() {
+    session_start();
+    if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['role'] !== 'responsable') {
+        echo "Accès refusé.";
+        exit;
+    }
+
+    $utilisateur = $_SESSION['utilisateur'];
+    $idResponsable = $utilisateur['id_utilisateur'];
+
+    require_once "models/Club.php";
+    $clubModel = new ClubModel();
+    $club = $clubModel->getClubByResponsable($idResponsable);
+
+    if (!$club) {
+        echo "Aucun club trouvé pour ce responsable.";
+        exit;
+    }
+
+    require "views/clubs/gererMonClub.php";
+}
+
+    
 }
